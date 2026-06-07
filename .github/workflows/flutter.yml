@@ -14,6 +14,11 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.24.0'
+          channel: 'stable'
+      
+      - name: Enable Flutter Desktop
+        run: |
+          flutter config --enable-linux-desktop
       
       - run: flutter pub get
       

@@ -1,0 +1,42 @@
+name: Flutter APK Build
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: stable
+
+      - name: Clear Cache & Recreate Workspace
+        run: |
+          flutter clean
+          rm -rf .dart_tool
+          rm -rf android
+          flutter create --platforms=android --org com.corz3376 .
+
+      - name: Get Dependencies
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --release --ignore-deprecation
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: beer-inventory-apk
+          path: build/app/outputs/flutter-apk/app-release.apk

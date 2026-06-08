@@ -16,13 +16,8 @@ jobs:
           flutter-version: '3.24.0'
           channel: stable
 
-      - name: Force Clean and Create Android Files
-        run: |
-          flutter clean
-          flutter create --platforms=android --org com.corz3376 .
-
-      - name: Upgrade Outdated Plugins
-        run: flutter pub upgrade --major-versions
+      - name: Create Android Platform Files
+        run: flutter create --platforms=android --org com.corz3376 .
 
       - name: Get Dependencies
         run: flutter pub get

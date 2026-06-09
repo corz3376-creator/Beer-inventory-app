@@ -33,7 +33,7 @@ jobs:
 
       - name: Regenerate Clean Platform Folders
         run: |
-          flutter create --platforms=android --force .
+          flutter create --platforms=android --project-name=beer_logging_app --force .
 
       - name: Clean Workspace Environment
         run: flutter clean

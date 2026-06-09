@@ -1,34 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'providers/inventory_provider.dart';
+import 'providers/product_provider.dart';
+import 'providers/usage_provider.dart';
 import 'screens/home_screen.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => InventoryProvider(),
-      child: const BeerInventoryApp(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ProductProvider()),
+        ChangeNotifierProvider(create: (_) => UsageProvider()),
+      ],
+      child: const MyApp(),
     ),
   );
 }
 
-class BeerInventoryApp extends StatelessWidget {
-  const BeerInventoryApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Beer Inventory Tracking',
       debugShowCheckedModeBanner: false,
+      title: 'Beer Inventory',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.amber,
-          brightness: Brightness.dark,
-        ),
         useMaterial3: true,
+        colorSchemeSeed: const Color(0xFF8B4513),
       ),
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }

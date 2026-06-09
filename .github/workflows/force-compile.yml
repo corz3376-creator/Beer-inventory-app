@@ -33,7 +33,7 @@ jobs:
 
       - name: Regenerate Clean Platform Folders
         run: |
-          flutter create --platforms=android .
+          flutter create --platforms=android --force .
 
       - name: Clean Workspace Environment
         run: flutter clean

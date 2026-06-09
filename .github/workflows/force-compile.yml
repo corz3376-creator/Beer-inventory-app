@@ -32,10 +32,10 @@ jobs:
           rm -rf android amdroid ios web windows macos linux
           flutter create --platforms=android .
 
-      - name: Configure Local Android Properties
+      - name: Hardcode Android Compile SDK to 35
         run: |
-          echo "flutter.compileSdkVersion=35" >> android/local.properties
-          echo "flutter.targetSdkVersion=35" >> android/local.properties
+          sed -i 's/compileSdk = flutter.compileSdkVersion/compileSdk = 35/g' android/app/build.gradle
+          sed -i 's/compileSdkVersion flutter.compileSdkVersion/compileSdkVersion 35/g' android/app/build.gradle
 
       - name: Clean Workspace Environment
         run: flutter clean
@@ -45,18 +45,6 @@ jobs:
 
       - name: Compile Release Binary
         run: flutter build apk --debug
-
-      - name: Export Release Package
-        uses: actions/upload-artifact@v4
-        with:
-          name: beer-inventory-apk
-          path: build/app/outputs/flutter-apk/app-debug.apk
-
-      - name: Download App Packages
-        run: flutter pub get
-
-      - name: Compile Release Binary
-        run: flutter build apk --debug --build-name=1.0.0 --build-number=1 --dart-define=android.compileSdkVersion=35
 
       - name: Export Release Package
         uses: actions/upload-artifact@v4

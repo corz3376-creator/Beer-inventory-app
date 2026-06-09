@@ -29,7 +29,6 @@ jobs:
       - name: Force Purge Old Platform Templates
         run: |
           rm -rf android amdroid ios web windows macos linux
-          git rm -rf android --cached || true
 
       - name: Regenerate Clean Platform Folders
         run: |

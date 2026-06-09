@@ -51,25 +51,61 @@ class _HomeScreenState extends State<HomeScreen> {
                     title: 'Products',
                     icon: Icons.local_drink,
                     color: Colors.blue,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const PlaceholderScreen(
+                            title: 'Products',
+                          ),
+                        ),
+                      );
+                    },
                   ),
                   _DashboardCard(
                     title: 'Inventory',
                     icon: Icons.inventory_2,
                     color: Colors.green,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const PlaceholderScreen(
+                            title: 'Inventory',
+                          ),
+                        ),
+                      );
+                    },
                   ),
                   _DashboardCard(
                     title: 'Scan Barcode',
                     icon: Icons.qr_code_scanner,
                     color: Colors.purple,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const PlaceholderScreen(
+                            title: 'Scan Barcode',
+                          ),
+                        ),
+                      );
+                    },
                   ),
                   _DashboardCard(
                     title: 'Reports',
                     icon: Icons.bar_chart,
                     color: Colors.orange,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const PlaceholderScreen(
+                            title: 'Reports',
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -128,6 +164,28 @@ class _DashboardCard extends StatelessWidget {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class PlaceholderScreen extends StatelessWidget {
+  final String title;
+
+  const PlaceholderScreen({super.key, required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+        backgroundColor: const Color(0xFF8B4513),
+      ),
+      body: Center(
+        child: Text(
+          '$title page',
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
       ),
     );

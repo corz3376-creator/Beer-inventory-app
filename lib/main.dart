@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-// Automatically pulling in your existing modules
-import 'providers/inventory_provider.dart'; // Verify your exact provider filename here
-import 'screens/home_screen.dart';       // Verify your exact main dashboard screen filename here
+// Fully-qualified package paths pointing directly to your architecture
+import 'package:beer_inventory_app/providers/inventory_provider.dart';
+import 'package:beer_inventory_app/screens/home_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MultiProvider(
       providers: [
@@ -25,11 +26,13 @@ class BeerInventoryApp extends StatelessWidget {
       title: 'Beer Inventory Tracking',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.amber,
+          brightness: Brightness.dark,
+        ),
         useMaterial3: true,
       ),
-      home: const HomeScreen(), // Points directly to your interface screen
+      home: const HomeScreen(),
     );
   }
 }
-

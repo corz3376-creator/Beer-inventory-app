@@ -10,7 +10,6 @@ dependencies:
     sdk: flutter
   provider: ^6.1.2
   http: ^1.2.1
-  google_sheets_api: ^0.1.2
 
 dev_dependencies:
   flutter_test:

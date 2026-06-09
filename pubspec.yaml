@@ -1,5 +1,6 @@
 name: beer_logging_app
-description: "A new Flutter project."
+description: "A barrel logging inventory application."
+publish_to: 'none'
 version: 1.0.0+1
 
 environment:
@@ -8,14 +9,23 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  uuid: ^4.3.3      # Required by your provider code
-  path_provider: ^2.1.2  # Required by your provider code
-  # Make sure your specific Google Sheets package (like gsheets) is also listed here!
+
+  # State Management & Architecture
+  provider: ^6.1.2
+
+  # Backend & Cloud Storage
+  gsheets: ^0.4.0
+  uuid: ^4.3.3
+
+  # Local System Utilities (Required by your current files)
+  path_provider: ^2.1.2
+  sqflite: ^2.3.0
+  path: ^1.9.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_lints: ^3.0.0
 
 flutter:
   uses-material-design: true
